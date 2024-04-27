@@ -1,0 +1,156 @@
+:root {
+  --primary-color: #0a0a0a;
+  --secondary-color: #f0f0f0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: Bebas Neue;
+  src: url(BebasNeue-Regular.otf);
+}
+
+html {
+  font-family: Bebas Neue, Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+body {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+section.three-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4rem;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+header h1 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+header nav {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+a.buy-btn {
+  display: inline-block;
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 2rem;
+}
+
+section.new-drop {
+  min-height: calc(100vh - 4rem);
+  padding: 2rem;
+
+  display: flex;
+  align-items: end;
+}
+
+section.new-drop img {
+  width: 100%;
+}
+
+section.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  font-size: 2rem;
+  margin: 3rem 0rem 5rem 0rem;
+}
+
+section.content p {
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+  z-index: 2;
+  mix-blend-mode: difference;
+  color: #d6d6d6;
+}
+
+div.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 2rem;
+  font-size: 6rem;
+  display: flex;
+  align-items: end;
+}
+
+@media screen and (max-width: 992px) {
+  section.content {
+    font-size: 1rem;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  div.loader {
+    font-size: 4rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    padding: 1rem;
+  }
+  header nav {
+    gap: 0.5rem;
+  }
+  header h1 {
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+
+  section.content {
+    grid-template-columns: 1fr;
+  }
+  section.content p {
+    font-size: 0.75rem;
+    line-height: 1.3;
+  }
+  div.loader {
+    font-size: 3rem;
+  }
+}
