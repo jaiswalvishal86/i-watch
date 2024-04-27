@@ -55,12 +55,8 @@ gltfLoader.load(
   "watch.glb",
   (gltf) => {
     let theModel = gltf.scene;
+    theModel.scale.set(20, 20, 20);
 
-    if (window.innerWidth < 600) {
-      theModel.scale.set(12, 12, 12);
-    } else {
-      theModel.scale.set(20, 20, 20);
-    }
     loadGroup.add(theModel);
 
     animate(
@@ -136,6 +132,9 @@ controls.enablePan = false;
 controls.autoRotate = true;
 controls.rotateSpeed = 2;
 controls.autoRotateSpeed = 3;
+if (window.innerWidth < 600) {
+  controls.enabled = false;
+}
 
 const composer = new EffectComposer(renderer);
 

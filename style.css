@@ -25,6 +25,10 @@ body {
   color: var(--primary-color);
 }
 
+canvas {
+  touch-action: auto !important;
+}
+
 img {
   max-width: 100%;
   vertical-align: bottom;
@@ -77,7 +81,7 @@ a.buy-btn {
 }
 
 section.new-drop {
-  min-height: calc(100vh - 4rem);
+  min-height: calc(100svh - 4rem);
   padding: 2rem;
 
   display: flex;
