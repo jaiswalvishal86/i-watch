@@ -106,7 +106,7 @@ gltfLoader.load(
     );
   },
   (xhr) => {
-    loaderTag.querySelector("span").innerText =
+    loaderTag.querySelector("span").innerHTML =
       Math.round((xhr.loaded / xhr.total) * 100) + "%";
   }
 );
