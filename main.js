@@ -28,7 +28,7 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
-camera.position.z = 2;
+camera.position.z = 0.25;
 
 const renderer = new THREE.WebGLRenderer({
   antialias: true,
@@ -55,7 +55,7 @@ gltfLoader.load(
   "watch.glb",
   (gltf) => {
     let theModel = gltf.scene;
-    theModel.scale.set(20, 20, 20);
+    theModel.scale.set(2.5, 2.5, 2.5);
 
     loadGroup.add(theModel);
 
@@ -88,9 +88,9 @@ gltfLoader.load(
 
     animate(
       (t) => {
-        loadGroup.position.y = -10 + 10 * t;
+        loadGroup.position.y = -1 + 1 * t;
       },
-      { duration: 2, delay: 1 }
+      { duration: 2, delay: 1, easing: "ease-in-out" }
     );
 
     animate(
@@ -106,13 +106,17 @@ gltfLoader.load(
     );
   },
   (xhr) => {
-    loaderTag.querySelector("span").innerHTML =
-      Math.round((xhr.loaded / xhr.total) * 100) + "%";
+    if (xhr.total > 0) {
+      loaderTag.querySelector("span").innerHTML =
+        Math.round((xhr.loaded / xhr.total) * 100) + "%";
+    } else {
+      loaderTag.querySelector("span").innerHTML = "Loading...";
+    }
   }
 );
 
 const ambientLight = new THREE.AmbientLight("0x404040");
-const keyLight = new THREE.DirectionalLight("0xffffff", 1);
+const keyLight = new THREE.DirectionalLight("0xffffff", 2);
 keyLight.position.set(-1, 1, 3);
 
 const fillLight = new THREE.DirectionalLight("0xffffff", 0.5);
@@ -121,7 +125,7 @@ fillLight.position.set(1, 1, 3);
 const backLight = new THREE.DirectionalLight("0xffffff", 1);
 backLight.position.set(-1, 3, -1);
 
-camera.add(ambientLight, keyLight, fillLight, backLight);
+camera.add(ambientLight, backLight, keyLight, fillLight);
 scene.add(camera);
 
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -164,25 +168,36 @@ const render = () => {
   composer.render();
 };
 
+let lastWidth = window.innerWidth;
+let lastHeight = window.innerHeight;
+
 const resize = () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
+  // Check if the actual window dimensions have changed
+  if (window.innerWidth !== lastWidth || window.innerHeight !== lastHeight) {
+    lastWidth = window.innerWidth;
+    lastHeight = window.innerHeight;
 
-  noisePass.uniforms.aspectRatio.value = window.innerWidth / window.innerHeight;
+    camera.aspect = lastWidth / lastHeight;
+    camera.updateProjectionMatrix();
 
-  renderer.setSize(window.innerWidth, window.innerHeight);
+    noisePass.uniforms.aspectRatio.value = lastWidth / lastHeight;
+
+    renderer.setSize(lastWidth, lastHeight);
+    composer.setSize(lastWidth, lastHeight);
+  }
 };
 
 const scroll = () => {
   clearTimeout(timeoutEffect);
-  aimEffect = 0;
+  aimEffect = 1;
 
   timeoutEffect = setTimeout(() => {
     aimEffect = 0;
-  }, 0.5);
+  }, 1);
 };
 
 render();
-window.addEventListener("resize", resize);
+window.addEventListener("resize", resize, { passive: true });
+window.addEventListener("orientationchange", resize);
 
 window.addEventListener("scroll", scroll);
