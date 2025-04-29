@@ -105,7 +105,12 @@ gltfLoader.load(
     );
   },
   (xhr) => {
-    const progress = Math.round((xhr.loaded / xhr.total) * 100);
+    // Add a check for xhr.total being 0
+    const progress =
+      xhr.total > 0
+        ? Math.round((xhr.loaded / xhr.total) * 100)
+        : Math.min(99, Math.round((xhr.loaded / 1000000) * 100)); // Fallback calculation
+
     const currentProgress =
       parseInt(loaderTag.querySelector("span").innerHTML) || 0;
 
