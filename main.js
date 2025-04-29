@@ -1,4 +1,3 @@
-import "./style.css";
 import { animate, inView } from "motion";
 import * as THREE from "three";
 import {
@@ -106,12 +105,20 @@ gltfLoader.load(
     );
   },
   (xhr) => {
-    if (xhr.total > 0) {
-      loaderTag.querySelector("span").innerHTML =
-        Math.round((xhr.loaded / xhr.total) * 100) + "%";
-    } else {
-      loaderTag.querySelector("span").innerHTML = "Loading...";
-    }
+    const progress = Math.round((xhr.loaded / xhr.total) * 100);
+    const currentProgress =
+      parseInt(loaderTag.querySelector("span").innerHTML) || 0;
+
+    // Smoothly transition to the new progress value
+    animate(
+      (t) => {
+        const newProgress = Math.round(
+          currentProgress + (progress - currentProgress) * t
+        );
+        loaderTag.querySelector("span").innerHTML = newProgress + "%";
+      },
+      { duration: 0.3 }
+    );
   }
 );
 
