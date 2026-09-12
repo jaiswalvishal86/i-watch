@@ -5,11 +5,15 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Apple Watch</title>
+    <title>Apple Watch Ultra</title>
   </head>
   <body>
-    <div class="loader">
-      <span>0%</span>
+    <div class="loader" role="status" aria-live="polite">
+      <div class="loader-inner">
+        <p class="loader-title">Apple Watch Ultra</p>
+        <div class="loader-bar"><i></i></div>
+        <span>0%</span>
+      </div>
     </div>
     <header>
       <h1>Apple Watch Ultra</h1>
@@ -33,35 +37,100 @@
 
     <section class="three-container"></section>
 
-    <section class="new-drop">
-      <img src="logo.svg" alt="New Drop" />
+    <section class="hero">
+      <h2>Apple Watch Ultra</h2>
+      <p>The most rugged and capable Apple Watch.</p>
+      <div class="hero-actions">
+        <a
+          class="btn-fill"
+          target="_blank"
+          href="https://www.apple.com/in/shop/buy-watch/apple-watch-se"
+          >Buy</a
+        >
+        <a
+          class="btn-outline"
+          target="_blank"
+          href="https://www.apple.com/in/apple-watch-se/"
+          >Learn more</a
+        >
+      </div>
     </section>
 
-    <section class="content">
-      <img src="warmup-1.jpg" alt="Photo" />
-      <p>
-        The rugged 49mm titanium case comes with built-in GPS + Cellular
-        connectivity and pairs with specialised, high-performance straps.
-      </p>
+    <section class="teardown" aria-label="Inside the watch">
+      <div class="teardown-stage">
+        <div class="teardown-copy">
+          <h2>Layer by layer</h2>
+          <p>Scroll to switch faces, then take it apart.</p>
+        </div>
+        <div class="teardown-labels" aria-hidden="true">
+          <div class="face-label"><svg viewBox="0 0 140 48" aria-hidden="true"><circle cx="4" cy="44" r="3.5"/><polyline points="4,44 44,6 128,6"/></svg><span></span></div>
+          <ol class="teardown-key"></ol>
+        </div>
+      </div>
     </section>
 
-    <section class="content">
-      <p>
-        Features a precision dual-frequency GPS system, which makes it the most
-        accurate GPS in a sports watch in dense urban environments. Footnote 20
-      </p>
-      <img src="warmup-2.jpg" alt="Photo" />
+    <section class="features">
+      <h2>Built for the extremes.</h2>
+      <div class="feature-grid">
+        <figure>
+          <img src="fitness-climb.jpg" alt="Climber on a limestone wall" />
+          <figcaption>
+            <strong>49mm titanium case.</strong> The rugged case comes with
+            built-in GPS + Cellular connectivity and pairs with specialised,
+            high-performance straps.
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="fitness-trail.jpg" alt="Runners on a mountain trail" />
+          <figcaption>
+            <strong>Precision dual-frequency GPS.</strong> The most accurate
+            GPS in a sports watch in dense urban environments. Footnote 20
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="fitness-ride.jpg" alt="Cyclist on a mountain road" />
+          <figcaption>
+            <strong>Up to 36 hours of battery.</strong> Take on almost anything
+            with 36 hours of battery life on a single charge, up to 72 hours on
+            low power settings Footnote 17 and up to 17 hours of full workout
+            use in Low Power Mode with full heart rate and GPS. Footnote 19
+          </figcaption>
+        </figure>
+      </div>
     </section>
 
-    <section class="content">
-      <img src="warmup-3.jpg" alt="Photo" />
-      <p>
-        Take on almost anything with 36 hours of battery life on a single
-        charge, up to 72 hours on low power settings Footnote 17 and up to 17
-        hours of full workout use in Low Power Mode with full heart rate and
-        GPS. Footnote 19
-      </p>
+    <section class="banner" aria-label="Go further">
+      <img src="fitness-banner.jpg" alt="" />
+      <div class="banner-copy">
+        <h2>Go further.</h2>
+        <p>Built for the long way round.</p>
+        <a
+          class="btn-fill"
+          target="_blank"
+          href="https://www.apple.com/in/shop/buy-watch/apple-watch-se"
+          >Buy</a
+        >
+      </div>
     </section>
+
+    <footer>
+      <nav>
+        <a target="_blank" href="https://www.apple.com/in/apple-watch-se/">About</a>
+        <a target="_blank" href="https://www.apple.com/in/apple-watch-se/why-apple-watch/">Cases</a>
+        <a target="_blank" href="https://www.apple.com/in/shop/buy-watch/apple-watch-se">Buy</a>
+      </nav>
+      <p>Concept page. Apple Watch Ultra is a trademark of Apple Inc.</p>
+      <p>
+        Photos via Wikimedia Commons: antoine73 (CC BY 3.0), Simon Legner (CC BY-SA 4.0),
+        Robin McConnell (CC BY 2.0), TRAILSOURCE.COM (CC BY 2.0).
+      </p>
+    </footer>
+    <button class="magnifier-toggle" type="button" aria-pressed="false" aria-label="Magnifier">
+      <svg viewBox="0 0 20 20" aria-hidden="true">
+        <circle cx="8.5" cy="8.5" r="5.5" />
+        <path d="M12.6 12.6 17 17" />
+      </svg>
+    </button>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
